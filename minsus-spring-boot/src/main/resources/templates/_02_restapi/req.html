@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rest API</title>
+</head>
+<body>
+<h1>=============== GET 요청 =================</h1>
+<div style="display: flex">
+    <form action="/get/res1" method="get" style="margin-right: 20px;">
+        <!--            실제 Rest 경우 get 경로를 사용하면 안된다. 자신이 무엇을 하는지 보여주면 안된다. -->
+        <h3>GET 전송 (require = true) </h3>
+        이름 : <input type="text" name="name">
+        나이 : <input type="text" name="age">
+
+        <br>
+        <button>Get 전송</button>
+    </form>
+    <form action="/get/res2" method="get" style="margin-right: 20px;">
+        <h3>GET 전송 (require = false) </h3>
+        <br>
+        <button>Get 전송</button>
+    </form>
+
+    <div style="margin-rigth: 20px;">
+        <h3>Get 전송 - ~/{param1}/{param2}</h3>
+        <a href="/get/res3/홍길동/20">get/res3/홍길동/20</a>
+        <br>
+        <a href="/get/res3/홍길동">get/res3/홍길동</a>
+    </div>
+    <div style="margin-rigth: 20px;">
+        <h3>Get 전송 - ~/{name}, ~{name}/{age}</h3>
+        <a href="/get/res4/바나나">get/res4/바나나</a>
+        <br>
+        <a href="/get/res4/바나나/1">get/res4/바나나/1</a>
+    </div>
+
+</div>
+<hr>
+    <h1> ============== POST 요청 ===============</h1>
+    <form action="/post/res1" method="post" style="margin-right: 20px;">
+        <h3>Post 전송 (require = true) </h3>
+        이름 : <input type="text" name="name">
+        나이 : <input type="text" name="age">
+
+        <br>
+        <button>Post 전송</button>
+    </form>
+    <form action="/post/res2" method="post" style="margin-right: 20px;">
+        <h3>Post 전송 (require = false) </h3>
+        <br>
+        <button>Post 전송</button>
+    </form>
+    <form action="/post/res3" method="post" style="margin-right: 20px;">
+        <h3>Post 전송 (ResponseBody) </h3>
+        이름 : <input type="text" name="name">
+        나이 : <input type="text" name="age">
+
+        <br>
+        <button>Post 전송</button>
+    </form>
+
+    <hr>
+
+    <h1>=============== DTO 이용 ================</h1>
+<div style="display: flex">
+    <form action="/dto/res1" method="get" style="margin-right: 20px;">
+        <!--            실제 Rest 경우 get 경로를 사용하면 안된다. 자신이 무엇을 하는지 보여주면 안된다. -->
+        <h3>GET - DTO </h3>
+        이름 : <input type="text" name="name">
+        나이 : <input type="text" name="age">
+
+        <br>
+        <button>Get 전송</button>
+    </form>
+    <form action="/dto/res2" method="post" style="margin-right: 20px;">
+        <h3>Post - DTO  </h3>
+        이름 : <input type="text" name="name">
+        나이 : <input type="text" name="age">
+        <br>
+        <button>Post 전송 (RequestBody X )</button>
+    </form>
+    <form action="/dto/res3" method="post" style="margin-right: 20px;">
+        <h3>Post - DTO  </h3>
+        이름 : <input type="text" name="name">
+        나이 : <input type="text" name="age">
+        <br>
+        <button>Post 전송 (RequestBody O )</button>
+    </form>
+
+
+</div>
+</body>
+</html>

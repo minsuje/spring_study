@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<body>
+<div>
+    <form action="/form/result" method="post" >
+    이름 : <input type="text" name="name"><br>
+    성별 <input type="radio" name="gender" value="남자">남자
+        <input type="radio" name="gender" value="여자">여자
+    <br>
+    생년월일
+    <select name="year">
+        <option value="1950">1950</option>
+    </select> <label>년</label>
+    <select name="month">
+        <option value="1">1</option>
+    </select> <label>월</label>
+    <select name="day">
+        <option value="1">1</option>
+    </select> <label>일</label> <br>
+    관심사 <input type="checkbox" value="여행" name="hobby"> 여행 <input type="checkbox" value="패션" name="hobby"> 패션 <input type="checkbox" value="음식" name="hobby"> 음식
+        <br>
+        <button>회원가입</button>
+    </form>
+</div>
+</body>
+</html>
