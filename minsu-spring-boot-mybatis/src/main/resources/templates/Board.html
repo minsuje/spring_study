@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1> 게시판 정보 조회</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>title</th>
+        <th>content</th>
+        <th>writer</th>
+        <th>create_at</th>
+    </tr>
+    <tr th:each="board:${boardList}">
+        <td th:text="${board.getId()}"></td>
+        <td th:text="${board.getTitle()}"></td>
+        <td th:text="${board.getContent()}"></td>
+        <td th:text="${board.getWriter()}"></td>
+        <td th:text="${board.getRegistered()}"></td>
+    </tr>
+</table>
+</body>
+</html>

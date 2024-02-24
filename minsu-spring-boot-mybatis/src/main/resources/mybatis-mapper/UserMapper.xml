@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="mybatis.minsuspringbootmybatis.mapper.UserMapper">
+<!--    mapper 폴더에 UserMapper 를 사용하겠다. 라는 맵핑-->
+    <select id="retrieveAll" resultType="mybatis.minsuspringbootmybatis.domain.User">
+<!--        id 형태는 User Mapper interface 에서 정의한 이름의 함수 대로 반환된다.  -->
+<!--        domain.User => User 형태로 반환이 될거다.-->
+<!--        Select 태그 안에는 어떤 SQL 문을 쓸건지 선언-->
+        SELECT user.* FROM user
+
+<!--        Where 조건 추가 -->
+        <where>
+            <if test="name != null">
+                AND name = #{name}
+            </if>
+        </where>
+    </select>
+
+    <select id="boardAll" resultType="mybatis.minsuspringbootmybatis.domain.Board">
+        SELECT * FROM board
+    </select>
+    <select id="boardTitle" resultType="mybatis.minsuspringbootmybatis.domain.Board">
+        SELECT * FROM board
+        <where>
+            <if test="title != null">
+                AND title = #{title}
+            </if>
+        </where>
+    </select>
+</mapper>
