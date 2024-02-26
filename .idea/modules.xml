@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/minsus-spring-boot.main.iml" filepath="$PROJECT_DIR$/.idea/modules/minsus-spring-boot.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/minsu-spring-boot-mybatis.main.iml" filepath="$PROJECT_DIR$/.idea/modules/minsu-spring-boot-mybatis.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/spring_study.iml" filepath="$PROJECT_DIR$/.idea/spring_study.iml" />
     </modules>
   </component>

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </head>
 <body>
 <div>
@@ -26,5 +28,67 @@
         <button>회원가입</button>
     </form>
 </div>
+
+<br>
+<hr>
+<div>
+    <form id="form_prac_axios">
+        이름 : <input type="text" name="name"><br>
+        성별 <input type="radio" name="gender" value="남자">남자
+        <input type="radio" name="gender" value="여자">여자
+        <br>
+        생년월일
+        <select name="year">
+            <option value="1950">1950</option>
+        </select> <label>년</label>
+        <select name="month">
+            <option value="1">1</option>
+        </select> <label>월</label>
+        <select name="day">
+            <option value="1">1</option>
+        </select> <label>일</label> <br>
+        관심사 <input type="checkbox" value="여행" name="hobby"> 여행 <input type="checkbox" value="패션" name="hobby"> 패션 <input type="checkbox" value="음식" name="hobby"> 음식
+        <br>
+        <button type="button" onclick="prac_axios()">실행</button>
+    </form>
+</div>
+
+<div>
+    <form id="register">
+        아이디 : <input type="text" name="userId">
+        비밀번호 : <input type="password" name="userPw">
+        <button type="button" onclick="send()">회원가입</button>
+    </form>
+</div>
+<div>
+    <form id="login">
+        아이디 : <input type="text" name="userId">
+        비밀번호 : <input type="password" name="userPw">
+        <button type="button" onclick="login()">로그인</button>
+    </form>
+</div>
+<script>
+    function prac_axios(){
+        const form = document.getElementById('form_prac_axios');
+        axios.post(`/form`, {name: form.name.value, gender: form.gender.value, year: form.year.value, month: form.month.value, day: form.day.value, hobby: form.hobby.value})
+        .then((res) => {
+            console.log(res.data);
+        })
+    }
+    function send(){
+        const form = document.getElementById('register');
+        axios.post(`/user/register`, {userId: form.userId.value, userPw: form.userPw.value})
+        .then((res) => {
+            console.log(res.data);
+        })
+    }
+    function login(){
+        const form = document.getElementById('login');
+        axios.post(`/user/login`, {userId: form.userId.value, userPw: form.userPw.value})
+        .then((res) => {
+            console.log(res.data);
+        })
+    }
+</script>
 </body>
 </html>

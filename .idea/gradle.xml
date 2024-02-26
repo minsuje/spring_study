@@ -4,11 +4,29 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/minsu-spring-boot-mybatis" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/minsu-spring-boot-mybatis" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="delegatedBuild" value="false" />
+        <option name="testRunner" value="PLATFORM" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/minsus-spring-boot" />
         <option name="gradleJvm" value="17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/minsus-spring-boot" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/study-sprig-boot-jpa" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/study-sprig-boot-jpa" />
           </set>
         </option>
       </GradleProjectSettings>
