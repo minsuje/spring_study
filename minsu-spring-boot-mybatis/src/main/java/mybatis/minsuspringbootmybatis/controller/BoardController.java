@@ -7,20 +7,18 @@ import mybatis.minsuspringbootmybatis.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/board") // /board가 기본으로 들어간 형태
 public class BoardController {
     @Autowired
     BoardService boardService;
 
 
-    @GetMapping({"/board/{title}", "/board"})
+    @GetMapping({"{title}", ""})
     public String getTable(@PathVariable(value = "title", required = false) String title, Model model){
         List<BoardDTO> boardList = boardService.getAllBoardList();
 
@@ -35,15 +33,69 @@ public class BoardController {
         return "board";
     }
 
-    @PostMapping("/board")
-    public String boardInsert(@RequestParam String title, @RequestParam String content, @RequestParam String writer){
+    // 방식 1 - post
+//    @PostMapping("/")
+//    public String boardInsert(@RequestParam String title, @RequestParam String content, @RequestParam String writer){
+//        Board board = new Board();
+//        board.setTitle(title);
+//        board.setContent(content);
+//        board.setWriter(writer);
+//        boardService.insertBoard(board);
+//        return "board";
+//    }
+
+    // 방식 2 - post axios
+    @PostMapping("")
+    @ResponseBody
+    public void boardInsert2(@RequestBody Board board){
+        // 게시글 작성 - post
+        boardService.insertBoard(board);
+    }
+
+    // update 방식 1 - 일반 폼
+    @PostMapping("update/{id}")
+    public String boardUpdate(@PathVariable(value = "id") int id, @RequestParam String title, @RequestParam String content, @RequestParam String writer){
         Board board = new Board();
+        board.setId(id);
         board.setTitle(title);
         board.setContent(content);
         board.setWriter(writer);
-        boardService.insertBoard(board);
+        boardService.updateBoard(board);
         return "board";
     }
+
+    // delete 방식 - 일반 폼
+    @DeleteMapping("delete/{id}")
+    public String delete(@PathVariable(value = "id") int id){
+        Board board = new Board();
+        board.setId(id);
+        boardService.deleteBoard(board);
+        return "board";
+    }
+
+    // update 방식 2 - axios
+    @PatchMapping("")
+    @ResponseBody
+    public void patchBoard(@RequestBody Board board){
+        // 3. 게시글 수정 - update 문
+        boardService.patchBoard(board);
+    }
+
+    // delete 방식 2
+    @DeleteMapping("")
+    @ResponseBody
+    public void deleteBoard(@RequestParam int id){
+        // 게시글 삭제 - delete 문
+        boardService.delete(id);
+    }
+
+    @GetMapping("/search")
+    @ResponseBody
+    public int searchBoard(@RequestParam String word){
+        // 5. 게시글 검색 - get
+        return boardService.searchBoard(word);
+    }
+
 
 //    @GetMapping("/board/{title}")
 //    public String getBoardWithTitle(@PathVariable(value = "title") String title, Model model){

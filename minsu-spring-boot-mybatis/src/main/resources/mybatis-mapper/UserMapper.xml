@@ -30,4 +30,26 @@
             </if>
         </where>
     </select>
+
+
+<!--    방식 2 동적 방식-->
+    <insert id="insertBoards" parameterType="map">
+        insert into board (title, content, writer) values (#{title}, #{content}, #{writer})
+    </insert>
+    <update id="patchBoard" parameterType="map">
+        UPDATE board SET title = #{title}, content=#{content}, writer=#{writer} where id = #{id}
+    </update>
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM board where=#{id}
+    </delete>
+
+    <select id="searchBoard" parameterType="String" resultType="mybatis.minsuspringbootmybatis.domain.Board">
+        SELECT * FROM board
+        <where>
+            <if test="word != ''">
+                <!--  CONCAT : 문자열 더하기  -->
+                AND title LIKE CONCAT('%', #{word}, '%')
+            </if>
+        </where>
+    </select>
 </mapper>

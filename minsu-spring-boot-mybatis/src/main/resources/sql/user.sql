@@ -10,12 +10,3 @@ create table user {
 };
 
 select * from user;
-
-CREATE table board {
-    id int not null auto_increment primary key,
-    title varchar(20) not null,
-    content varchar(100) not null,
-    writer varchar(10) not null,
-    registered timestamp DEFAULT CURRENT_TIMESTAMP
-}
-

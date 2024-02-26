@@ -46,7 +46,31 @@ public class BoardService {
         }
         return listTitle;
     }
+
     public void insertBoard(Board board){
         userMapper.insertBoard(board);
+    }
+
+    // 방식 1
+    public void updateBoard(Board board) { userMapper.updateBoard(board);}
+
+    public void deleteBoard(Board board) {userMapper.deleteBoardWithID(board);}
+
+
+    // 방식 2
+    public void patchBoard(Board board){
+        userMapper.patchBoard(board);
+    }
+
+    public void delete(int id){
+        userMapper.delete(id);
+    }
+
+    public int searchBoard(String word){
+        // select 문  자체를 count 로 동작시킬 수도 있고,
+        // List 로 받아서 그에 대한 길이를 전달할 수도 있다.
+     List<Board> result = userMapper.searchBoard(word);
+     return result.size();
+//     return result;
     }
 }
