@@ -10,4 +10,8 @@ public class UserDTO {
     private String name;
     private String nickname;
     private int no;
+
+    public String getUser() {
+        return id + name + nickname;
+    }
 }

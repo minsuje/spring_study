@@ -18,7 +18,7 @@ import java.util.Optional;
 // Repository
 // - Entity 에 의해 생성된 DB에 접근하는 메소드를 사용하기 위한 인터페이스
 @Repository // Repository 계층임을 명시하는 클래스
-public interface UserRepository extends JpaRepository<UserEntity, Integer> {
+public interface UserRepository extends JpaRepository<UserEntity, Integer> { // <Entity, primary key>
 
     // 1)
     // existsByXXX()
@@ -51,4 +51,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
     @Query("select u from UserEntity u where u.name=:name")
     UserEntity findName(String name);
 
+    @Query("UPDATE UserEntity user set user.name =:name")
+    UserEntity updateUser(String name);
 }
